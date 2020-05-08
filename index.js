@@ -3,8 +3,8 @@ const simulator = require('../simulator/dist/simulator.umd.js');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-//console.log(Object.keys(sim));
-reqObj = {"job_id":14,"craftsmanship":5000,"control":6000,"cp":600,"specialist":1,"level":80};
+//console.log(Object.keys(simulator));
+reqObj = {"job_id":14,"craftsmanship":2487,"control":2609,"cp":623,"specialist":1,"level":80};
 let stats = new simulator.CrafterStats(reqObj['job_id'], reqObj['craftsmanship'], reqObj['control'], reqObj['cp'], reqObj['specialist'], reqObj['level'], Array(8).fill(reqObj['level']));
 console.log(stats);
 let craft = {
@@ -41,31 +41,51 @@ console.log(sim);
 */
 
 let sim = new simulator.Simulation(craft, [], stats);
-console.log(sim);
-sim.run(false);
-console.log(sim);
+//console.log(sim);
+//sim.run(false);
+//console.log(sim);
 sim.actions = [];
 sim.actions.push(new simulator.MuscleMemory);
 sim.run(false)
 console.log(sim);
+
 sim.actions = [];
-sim.actions.push(new simulator.Observe);
+sim.actions.push(new simulator.Veneration);
 sim.run(false)
 console.log(sim);
+
 sim.actions = [];
-sim.actions.push(new simulator.Observe);
+sim.actions.push(new simulator.HastyTouch);
 sim.run(false)
 console.log(sim);
+
 sim.actions = [];
-sim.actions.push(new simulator.Observe);
+sim.actions.push(new simulator.HastyTouch);
 sim.run(false)
 console.log(sim);
+
 sim.actions = [];
-sim.actions.push(new simulator.Observe);
+sim.actions.push(new simulator.RapidSynthesis);
 sim.run(false)
 console.log(sim);
+
 sim.actions = [];
-sim.actions.push(new simulator.Observe);
+sim.actions.push(new simulator.RapidSynthesis);
+sim.run(false)
+console.log(sim);
+
+sim.actions = [];
+sim.actions.push(new simulator.MastersMend);
+sim.run(false)
+console.log(sim);
+
+sim.actions = [];
+sim.actions.push(new simulator.RapidSynthesis);
+sim.run(false)
+console.log(sim);
+
+sim.actions = [];
+sim.actions.push(new simulator.RapidSynthesis);
 sim.run(false)
 console.log(sim);
 
