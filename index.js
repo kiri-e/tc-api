@@ -4,19 +4,19 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 //console.log(Object.keys(simulator));
-reqObj = {"job_id":14,"craftsmanship":2487,"control":2609,"cp":623,"specialist":1,"level":80};
+reqObj = {"job_id":14,"craftsmanship":2721,"control":2927+42,"cp":641,"specialist":1,"level":80};
 let stats = new simulator.CrafterStats(reqObj['job_id'], reqObj['craftsmanship'], reqObj['control'], reqObj['cp'], reqObj['specialist'], reqObj['level'], Array(8).fill(reqObj['level']));
 console.log(stats);
 let craft = {
               id: '3864',
               job: 14,
-              rlvl: 481,
-              durability: 60,
-              quality: 64862,
-              progress: 9181,
+              rlvl: 511,
+              durability: 50,
+              quality: 824000,
+              progress: 11126,
               lvl: 80,
-              suggestedCraftsmanship: 2484,
-              suggestedControl: 2206,
+              suggestedCraftsmanship: 2620,
+              suggestedControl: 2540,
               hq: 1,
               quickSynth: 1,
               ingredients: [],
