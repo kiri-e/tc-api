@@ -40,6 +40,7 @@ console.log(sim);sim.runAction(new simulator.Observe);
 console.log(sim);
 */
 
+/*
 let sim = new simulator.Simulation(craft, [], stats);
 //console.log(sim);
 //sim.run(false);
@@ -58,12 +59,14 @@ sim.actions = [];
 sim.actions.push(new simulator.HastyTouch);
 sim.run(false)
 console.log(sim);
-
+*/
+/*
 sim.actions = [];
 sim.actions.push(new simulator.HastyTouch);
 sim.run(false)
 console.log(sim);
-
+*/
+/*
 sim.actions = [];
 sim.actions.push(new simulator.RapidSynthesis);
 sim.run(false)
@@ -88,8 +91,8 @@ sim.actions = [];
 sim.actions.push(new simulator.RapidSynthesis);
 sim.run(false)
 console.log(sim);
-
-/*
+*/
+let sims = {};
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
@@ -103,26 +106,15 @@ const server = http.createServer((req, res) => {
         try {
             let reqObj = JSON.parse(body);
             let stats = new simulator.CrafterStats(reqObj['job_id'], reqObj['craftsmanship'], reqObj['control'], reqObj['cp'], reqObj['specialist'], reqObj['level'], Array(8).fill(reqObj['level']));
-    
-            let craft = {
-              id: '3864',
-              job: 14,
-              rlvl: 481,
-              durability: 60,
-              quality: 64862,
-              progress: 9181,
-              lvl: 80,
-              suggestedCraftsmanship: 2484,
-              suggestedControl: 2206,
-              hq: 1,
-              quickSynth: 1,
-              ingredients: [],
-              expert: 1
-            };
-            let sim = simulation.Simulation(craft, [], stats);
-            res.write(JSON.stringify(sim));
+               
+            let sim = new simulator.Simulation(craft, [], stats);
+            let tag = "" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            res.write(tag + "\n");
+            sims[tag] = sim;
+            res.write("" + JSON.stringify(sim));
+            res.end("");
         } catch(e) {
-            res.end("idk you fucked up " + e.toString() + " --- " + body);
+            res.end("idk you fucked up /start\n" + e.stack + "\n" + e.toString() + "\n --- " + body);
         return;
         }
 
@@ -130,12 +122,56 @@ const server = http.createServer((req, res) => {
     
     
   }  else if (req.url == '/step') {
-  }  else {
+    let body = [];
+    req.on('data', (chunk) => {
+        body.push(chunk);
+        }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        
+        try {
+            let reqObj = JSON.parse(body);
+            
+            let sim = sims[reqObj['tag']];
+            let action = reqObj['action'];
+            sim.actions = [];
+            sim.actions.push(new simulator.HastyTouch);
+            sim.run(false);
+            sims[reqObj['tag']] = sim
+            res.write(JSON.stringify(sim));
+            res.end("");
+        } catch(e) {
+            res.end("idk you fucked up /step" + e.toString() + " --- " + body);
+        return;
+        }
+
+    });
+  
+  } else if (req.url == '/done') {
+    let body = [];
+    req.on('data', (chunk) => {
+        body.push(chunk);
+        }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        
+        try {
+            let reqObj = JSON.parse(body);
+            
+            delete sims[reqObj['tag']];
+            res.write("k done");
+            res.end("");
+        } catch(e) {
+            res.end("idk you fucked up /done" + e.toString() + " --- " + body);
+        return;
+        }
+
+    });
+  } else {
       res.end("Unknown command")
   }
+  console.log(Object.keys(sims));
+  //res.end("");
 });
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-*/
