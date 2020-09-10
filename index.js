@@ -135,8 +135,9 @@ const server = http.createServer((req, res) => {
             let action = reqObj['action'];
             sim.actions = [];
             sim.actions.push(new simulator.HastyTouch);
-            sim.run(false);
+            let sim_res = sim.run(false);
             sims[reqObj['tag']] = sim
+            res.write(JSON.stringify(sim_res) + "\n");
             res.write(JSON.stringify(sim));
             res.end("");
         } catch(e) {
