@@ -12,8 +12,9 @@ print("")
 
 print("step 1 --------------------------------------------")
 
-jdata = {"tag":tag,"action":"hasty"}
+jdata = {"tag":tag,"action":"HastyTouch"}
 r = requests.post('http://127.0.0.1:3000/step', data = json.dumps(jdata))
+print(r.text)
 simres, sim = r.text.split("\n")
 j = json.loads(simres)
 pp = json.dumps(j, sort_keys = True, indent=4)
@@ -26,7 +27,7 @@ print(pp)
 print("")
 
 print("step 2 --------------------------------------------")
-jdata = {"tag":tag,"action":"hasty"}
+jdata = {"tag":tag,"action":"HastyTouch"}
 r = requests.post('http://127.0.0.1:3000/step', data = json.dumps(jdata))
 simres, sim = r.text.split("\n")
 j = json.loads(simres)

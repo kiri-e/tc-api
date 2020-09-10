@@ -132,16 +132,20 @@ const server = http.createServer((req, res) => {
             let reqObj = JSON.parse(body);
             
             let sim = sims[reqObj['tag']];
-            let action = reqObj['action'];
+            let req_action = reqObj['action'];
             sim.actions = [];
-            sim.actions.push(new simulator.HastyTouch);
+            let temp_action = simulator.CraftingActionsRegistry.ALL_ACTIONS.find(el => {
+                    return el.name === req_action;
+            });
+            console.log(temp_action.action);
+            sim.actions.push(temp_action.action);
             let sim_res = sim.run(false);
             sims[reqObj['tag']] = sim
             res.write(JSON.stringify(sim_res) + "\n");
             res.write(JSON.stringify(sim));
             res.end("");
         } catch(e) {
-            res.end("idk you fucked up /step" + e.toString() + " --- " + body);
+            res.end("idk you fucked up /step\n" + e.stack + "\n" + e.toString() + "\n --- " + body);
         return;
         }
 
@@ -161,7 +165,7 @@ const server = http.createServer((req, res) => {
             res.write("k done");
             res.end("");
         } catch(e) {
-            res.end("idk you fucked up /done" + e.toString() + " --- " + body);
+            res.end("idk you fucked up /done\n" + e.stack + "\n" + e.toString() + "\n --- " + body);
         return;
         }
 
