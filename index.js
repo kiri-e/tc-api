@@ -8,19 +8,19 @@ reqObj = {"job_id":14,"craftsmanship":2721,"control":2927+42,"cp":641,"specialis
 let stats = new simulator.CrafterStats(reqObj['job_id'], reqObj['craftsmanship'], reqObj['control'], reqObj['cp'], reqObj['specialist'], reqObj['level'], Array(8).fill(reqObj['level']));
 console.log(stats);
 let craft = {
-              id: '3864',
+              id: '36692',
               job: 14,
-              rlvl: 511,
-              durability: 50,
-              quality: 824000,
-              progress: 11126,
-              lvl: 80,
-              suggestedCraftsmanship: 2620,
-              suggestedControl: 2540,
+              rlvl: 590,
+              durability: 70,
+              quality: 12800,
+              progress: 4300,
+              lvl: 90,
+              suggestedCraftsmanship: 3240,
+              suggestedControl: 3130,
               hq: 1,
               quickSynth: 1,
               ingredients: [],
-              expert: 1
+              expert: 0
             };
 /*            
 let sim = new simulator.Simulation(craft, [], stats);

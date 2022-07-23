@@ -63,6 +63,11 @@ def do_action(tag, action, full = False):
         for buff in buffs:
             print(buff_names[buff['buff']], repr(buff))
             
+do_action(tag, "Reflect")
+do_action(tag, "BasicTouch")
+do_action(tag, "BasicTouch")
+
+"""            
 do_action(tag, "HastyTouch")
 do_action(tag, "HastyTouch")
 do_action(tag, "Reflect", full = True)
@@ -77,7 +82,8 @@ do_action(tag, "BasicTouch")
 do_action(tag, "BasicTouch")
 do_action(tag, "BasicTouch")
 do_action(tag, "BasicTouch", full = True)
-
+"""
+do_action(tag, "NameOfTheElements", full = True)
 jdata = {"tag":tag}
 r = requests.post('http://127.0.0.1:3000/done', data = json.dumps(jdata))
 print(r.text)
