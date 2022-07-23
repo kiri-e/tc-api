@@ -7,21 +7,62 @@ const port = 3000;
 reqObj = {"job_id":14,"craftsmanship":2721,"control":2927+42,"cp":641,"specialist":1,"level":80};
 let stats = new simulator.CrafterStats(reqObj['job_id'], reqObj['craftsmanship'], reqObj['control'], reqObj['cp'], reqObj['specialist'], reqObj['level'], Array(8).fill(reqObj['level']));
 console.log(stats);
-let craft = {
-              id: '36692',
-              job: 14,
-              rlvl: 590,
-              durability: 70,
-              quality: 12800,
-              progress: 4300,
-              lvl: 90,
-              suggestedCraftsmanship: 3240,
-              suggestedControl: 3130,
-              hq: 1,
-              quickSynth: 1,
-              ingredients: [],
-              expert: 0
-            };
+let craft =   {
+        "id": 34961,
+        "job": 9,
+        "rlvl": 590,
+        "durability": 70,
+        "quality": 12800,
+        "progress": 4300,
+        "lvl": 90,
+        "suggestedCraftsmanship": 2924,
+        "suggestedControl": 2703,
+        "materialQualityFactor": 50,
+        "stars": 2,
+        "hq": 1,
+        "controlReq": 3130,
+        "craftsmanshipReq": 3240,
+        "unlockId": 35619,
+        "conditionsFlag": 15,
+        "ingredients": [
+          {
+            "id": 37280,
+            "amount": 3,
+            "quality": 651.5962
+          },
+          {
+            "id": 36173,
+            "amount": 3,
+            "quality": 640.5522
+          },
+          {
+            "id": 36251,
+            "amount": 1,
+            "quality": 601.8982
+          },
+          {
+            "id": 37284,
+            "amount": 2
+          },
+          {
+            "id": 36224,
+            "amount": 1
+          },
+          {
+            "id": 14,
+            "amount": 3
+          },
+          {
+            "id": 17,
+            "amount": 3
+          }
+        ],
+        "complexity": {
+          "nq": 3225,
+          "hq": 3245
+        }
+      }
+    ],
 /*            
 let sim = new simulator.Simulation(craft, [], stats);
 console.log(sim);
