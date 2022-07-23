@@ -8,7 +8,7 @@ buff_names = ["Inner Quiet", "Waste Not", "Waste Not II", "Manipulation", "Great
 
 #no careful observation
 
-stats = {"job_id":14,"craftsmanship":2721,"control":2927+42,"cp":641,"specialist":1,"level":80}
+stats = {"job_id":9,"craftsmanship":3664,"control":3860,"cp":672,"specialist":0,"level":90}
 r = requests.post('http://127.0.0.1:3000/start', data = json.dumps(stats))
 
 tag, sim = r.text.split("\n")
@@ -63,10 +63,10 @@ def do_action(tag, action, full = False):
         for buff in buffs:
             print(buff_names[buff['buff']], repr(buff))
             
-do_action(tag, "Reflect")
-do_action(tag, "BasicTouch")
-do_action(tag, "BasicTouch")
-
+do_action(tag, "Reflect", full=True)
+do_action(tag, "BasicTouch", full=True )
+do_action(tag, "BasicTouch", full=True)
+do_action(tag, "BasicSynthesis", full=True)
 """            
 do_action(tag, "HastyTouch")
 do_action(tag, "HastyTouch")
@@ -83,7 +83,7 @@ do_action(tag, "BasicTouch")
 do_action(tag, "BasicTouch")
 do_action(tag, "BasicTouch", full = True)
 """
-do_action(tag, "NameOfTheElements", full = True)
+#do_action(tag, "NameOfTheElements", full = True)
 jdata = {"tag":tag}
 r = requests.post('http://127.0.0.1:3000/done', data = json.dumps(jdata))
 print(r.text)

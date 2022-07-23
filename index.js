@@ -24,6 +24,10 @@ let craft =   {
         "craftsmanshipReq": 3240,
         "unlockId": 35619,
         "conditionsFlag": 15,
+        "progressDivider": 130, 
+        "qualityDivider": 115, 
+        "progressModifier": 80, 
+        "qualityModifier": 70, 
         "ingredients": [
           {
             "id": 37280,
@@ -62,7 +66,7 @@ let craft =   {
           "hq": 3245
         }
       }
-    ],
+    
 /*            
 let sim = new simulator.Simulation(craft, [], stats);
 console.log(sim);
